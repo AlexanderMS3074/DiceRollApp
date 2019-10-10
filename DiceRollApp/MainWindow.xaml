@@ -1,4 +1,8 @@
-﻿<Window x:Class="DiceRollApp.MainWindow"
+﻿<!--
+    Expect this to change frequently and have lots of weird things going on.
+    I do a lot of testing/fiddling in the XAML.
+-->
+    <Window x:Class="DiceRollApp.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
