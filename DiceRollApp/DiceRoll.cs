@@ -3,6 +3,7 @@ using System.Security.Cryptography;
 using System.Text.RegularExpressions;
 
 namespace DiceRollApp {
+    //                  2 d10 + 5
     class DiceRoll {
         #region Private Variables
         static RNGCryptoServiceProvider rngCSP = new RNGCryptoServiceProvider();
@@ -35,21 +36,6 @@ namespace DiceRollApp {
             set { finalResult = value; }
         }
         #endregion
-
-        static int RollDice(int _sides) {
-            byte numSides = Convert.ToByte(_sides);
-            byte[] randomNum = new byte[1];
-                
-            do { rngCSP.GetBytes(randomNum); }
-            while (!IsFairRoll(randomNum[0], numSides));
-
-            return (randomNum[0] % numSides) + 1;
-        }
-
-        static bool IsFairRoll(byte roll, byte _numSides) {
-            int fullSetsOfValues = byte.MaxValue / _numSides;
-            return roll < _numSides * fullSetsOfValues;
-        }
 
         static bool IsDnDNotation(string _input) {
             Regex parseInput = new Regex(@"\d*d\d+");
@@ -111,6 +97,17 @@ namespace DiceRollApp {
             }
         }
 
+        static void Parse(string _notation) {
+            GetNumberOfDice(_notation);
+            GetDiceSides(_notation);
+            GetModifier(_notation);
+        }
+
+        static bool IsFairRoll(byte roll, byte _numSides) {
+            int fullSetsOfValues = byte.MaxValue / _numSides;
+            return roll < _numSides * fullSetsOfValues;
+        }
+
         static bool IsErrors() {
             if(DiceSides == int.MinValue) {
                 Console.WriteLine("Error: GetDiceSides Was Unable to Parse");
@@ -125,10 +122,14 @@ namespace DiceRollApp {
             }
         }
 
-        static void Parse(string _notation) {
-            GetNumberOfDice(_notation);
-            GetDiceSides(_notation);
-            GetModifier(_notation);
+        static int RollDice(int _sides) {
+            byte numSides = Convert.ToByte(_sides);
+            byte[] randomNum = new byte[1];
+
+            do { rngCSP.GetBytes(randomNum); }
+            while (!IsFairRoll(randomNum[0], numSides));
+
+            return (randomNum[0] % numSides) + 1;
         }
 
         static void RollSingleDice() {

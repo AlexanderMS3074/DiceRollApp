@@ -18,9 +18,7 @@ namespace DiceRollApp {
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window {
-        private int turnCount = 0;
-        private string rollResults;
-        private string rollModifiers;
+        DiceRoll DiceRoll = new DiceRoll();
 
         public MainWindow() {
             InitializeComponent();
