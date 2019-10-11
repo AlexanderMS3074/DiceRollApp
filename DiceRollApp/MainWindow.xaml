@@ -30,58 +30,42 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <!--<Image Source="Resources/paper.png"
-                   Grid.ColumnSpan="2" 
-                   HorizontalAlignment="Left" 
-                   VerticalAlignment="Top" 
-                   Width="256" Stretch="None" Height="256" IsEnabled="False">
-            </Image>-->
             <Grid Name="grdSettings">
-                <!--Background="#333333">-->
+                
                 <Button Name="btnTest"
                         Content="TEST"
                         Height="25"
                         Width="50"
                         Click="BtnTest_Click"/>
+                
+                <Button Name="btnExit"
+                        Content="EXIT"
+                        Width="50"
+                        Height="20"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Bottom"
+                        Click="BtnExit_Click"/>
             </Grid>
-            <Grid Name="grdIcons"
-                  Grid.Column="1">
+            <Grid Name="grdRollOutcome"
+                  Grid.Column="1" Initialized="GrdIcons_Initialized">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="2*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="3*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="3*"/>
+                    <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-                <Label Name="lbNumDice"
+                <!--#region Number of Dice-->
+                <Label Name="lblRPText"
                        Grid.Row="1"
                        VerticalAlignment="Center"
-                       Content="Number of Dice:"
+                       Content=""
                        FontFamily="Old English Text MT"
-                       FontSize="22"/>
-                <Label Name="lbDiceSides"
-                       Grid.Row="2"
-                       VerticalAlignment="Center"
-                       Content="Number of Sides:"
-                       FontFamily="Old English Text MT"
-                       FontSize="22"/>
-                <Label Name="lbModifier"
-                       Grid.Row="3"
-                       VerticalAlignment="Center"
-                       Content="Modifier:"
-                       FontFamily="Old English Text MT"
-                       FontSize="22"/>
-                <Label Name="lbOutcome"
-                       Grid.Row="4"
-                       VerticalAlignment="Center"
-                       Content="Outcome:"
-                       FontFamily="Old English Text MT"
-                       FontSize="22"/>
+                       FontSize="30"
+                       Initialized="LblRPText_Initialized"/>
+                <!--#endregion-->
             </Grid>
             <Grid Name="grdRollHistory"
                   Grid.Column="2">

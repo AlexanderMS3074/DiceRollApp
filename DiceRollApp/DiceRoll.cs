@@ -88,7 +88,6 @@ namespace DiceRollApp {
             }
             else {
                 Modifier = matchModifier.ToString()[0];
-                //TODO ensure a maximum value on the modifier
                 if (long.TryParse(matchModifier.ToString().Substring(1), out long n)) { ModifierAmount = (int)n; }
                 else {
                     Modifier = '`';
