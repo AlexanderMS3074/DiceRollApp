@@ -29,7 +29,9 @@ namespace DiceRollApp {
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window {
-        DiceRoll DiceRoll = new DiceRoll();
+        DiceRoll DiceRoller = new DiceRoll();
+
+        //Debug Variables
 
         public MainWindow() {
             InitializeComponent();
@@ -82,6 +84,15 @@ namespace DiceRollApp {
         private void BtnTest_Click(object sender, RoutedEventArgs e) {
             tblkDebugText.Text = $"SelectedIndex: {lbxNumberOfDice.SelectedIndex}\n" +
                                  $"SelectedValue: {lbxNumberOfDice.SelectedItem}";
+            //TODO change
+            DiceRoller.RollDice((int)lbxNumberOfDice.SelectedItem, 6, '+', 0);
+            tbxRPText.FontSize = 20;
+            tbxRPText.Text = $"Number of Dice      : {DiceRoller.NumberOfDice}\n" +
+                             $"Number of Dice Sides: {DiceRoller.NumberOfSides}\n" +
+                             $"Modifier            : {DiceRoller.Modifier}\n" +
+                             $"Modifier Amount     : {DiceRoller.ModifierAmount}\n" +
+                             $"Total               : {DiceRoller.FinalResult}";
+
         }
     }
 }

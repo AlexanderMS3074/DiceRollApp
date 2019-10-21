@@ -17,12 +17,12 @@
         Width="800"
         ResizeMode="NoResize"
         Background="#333"
-        FontFamily="Old English Text MT">
+        FontFamily="Consolas">
     <Window.Resources>
         <SolidColorBrush x:Key="{x:Static SystemColors.ControlTextBrushKey}"
-                         Color="#997848"/>
+                         Color="DarkGray"/><!--997848-->
         <SolidColorBrush x:Key="{x:Static SystemColors.WindowTextBrushKey}"
-                         Color="#997848"/>
+                         Color="DarkGray"/>
     </Window.Resources>
     <!--<Window.Background>
         <VisualBrush TileMode="Tile" Viewport="0,0,1,1">
@@ -66,7 +66,6 @@
                              PreviewMouseWheel="LbxNumberOfDice_PreviewMouseWheel"
                              ScrollViewer.VerticalScrollBarVisibility="Hidden"
                              ScrollViewer.HorizontalScrollBarVisibility="Hidden">
-                        
                     </ListBox>
                 </Grid>
 
