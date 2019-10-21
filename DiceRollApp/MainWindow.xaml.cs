@@ -19,7 +19,7 @@ using System.Windows.Shapes;
         - Dice Sides
         - Modifier
         - Modifier Amount
-        Reskin Buttons and Scrollbar
+        Add Control Templates
 */
 /*TODO  Aftertoughts
         Add randomizer for multiple RP dice rolling texts
@@ -34,20 +34,54 @@ namespace DiceRollApp {
         public MainWindow() {
             InitializeComponent();
             tblkRollHistory.Text = "I'm working!!!";
+            //Debug Below This Line
+            tbxRPText.Text = "You roll X number of Y dice with a modifier +/- Z.\n" +
+                             "The outcome of the roll totals N...";
+            InitializeSelectionBoxTest();
         }
 
-        private void LblRPText_Initialized(object sender, EventArgs e) {
-            lblRPText.Content = "You roll X number of Y dice with a modifier +/- Z.\n" + 
-                                "The outcome of the roll totals N...";
+        #region Intialization
+        private void InitializeSelectionBoxTest() {
+            for (int i = 1; i < 100; i++) {
+                lbxNumberOfDice.Items.Add(i);
+            }
+            //lbxNumberOfDice.Items.Add(1);
+            tblkDebugText.Text = $"SelectedIndex: {lbxNumberOfDice.SelectedIndex}";
         }
+        #endregion
 
+        #region Button Events
         private void BtnExit_Click(object sender, RoutedEventArgs e) {
             Environment.Exit(0);
         }
 
-//TODO  Comment All Methods Below This Line (Debug Methods Only)
+        #endregion
+
+        private void LbxNumberOfDice_PreviewMouseWheel(object sender, MouseWheelEventArgs e) {
+            if (e.Delta > 0) {
+                if (lbxNumberOfDice.SelectedIndex >= 0) {
+                    lbxNumberOfDice.SelectedIndex = lbxNumberOfDice.SelectedIndex + 1;
+                    lbxNumberOfDice.ScrollIntoView(lbxNumberOfDice.SelectedIndex + 1);
+                }
+            }
+            if (e.Delta < 0) {
+                if (lbxNumberOfDice.SelectedIndex <= (lbxNumberOfDice.Items.Count - 1)) {
+                    if (lbxNumberOfDice.SelectedIndex == 0) {
+                        lbxNumberOfDice.ScrollIntoView(lbxNumberOfDice.SelectedIndex);
+                    }
+                    else {
+                        lbxNumberOfDice.SelectedIndex = lbxNumberOfDice.SelectedIndex - 1;
+                        lbxNumberOfDice.ScrollIntoView(lbxNumberOfDice.SelectedIndex + 1);
+                    }
+                }
+            }
+            e.Handled = true;
+        }
+
+        //TODO  Comment All Methods Below This Line (Debug Methods Only)
         private void BtnTest_Click(object sender, RoutedEventArgs e) {
-            tblkRollHistory.Text = tblkRollHistory.Text;
+            tblkDebugText.Text = $"SelectedIndex: {lbxNumberOfDice.SelectedIndex}\n" +
+                                 $"SelectedValue: {lbxNumberOfDice.SelectedItem}";
         }
     }
 }
