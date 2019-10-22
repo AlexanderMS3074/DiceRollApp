@@ -23,6 +23,34 @@
                          Color="DarkGray"/><!--997848-->
         <SolidColorBrush x:Key="{x:Static SystemColors.WindowTextBrushKey}"
                          Color="DarkGray"/>
+        <Style x:Key="NumberSelector" TargetType="ListBox">
+            <Setter Property="Grid.Column" Value="2"/>
+            <Setter Property="SelectionMode" Value="Single"/>
+            <Setter Property="Width" Value="50"/>
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="FontSize" Value="35"/>
+            <Setter Property="HorizontalContentAlignment" Value="Right"/>
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Hidden"/>
+            <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Hidden"/>
+        </Style>
+        <Style x:Key="SettingsLabel" TargetType="Label">
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="Margin" Value="0"/>
+            <Setter Property="FontSize" Value="22"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
+        <Style x:Key="Colon" TargetType="Label">
+            <Setter Property="Content" Value=":"/>
+            <Setter Property="Grid.Column" Value="1"/>
+            <Setter Property="Margin" Value="-2,-2,-2,0"/>
+            <Setter Property="FontSize" Value="25"/>
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
     </Window.Resources>
     <!--<Window.Background>
         <VisualBrush TileMode="Tile" Viewport="0,0,1,1">
@@ -40,34 +68,62 @@
             </Grid.ColumnDefinitions>
             <Grid Name="grdSettings">
                 <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="50" x:Name="NumDiceRow"/>
+                    <RowDefinition Height="50" x:Name="NumSideRow"/>
+                    <RowDefinition Height="50" x:Name="ModifyRow"/>
+                    <RowDefinition Height="50" x:Name="ModNumRow"/>
                     <RowDefinition Height="2*"/>
-                    <RowDefinition Height="*" x:Name="NumDiceRow"/>
-                    <RowDefinition Height="*" x:Name="NumSideRow"/>
-                    <RowDefinition Height="*" x:Name="ModifyRow"/>
-                    <RowDefinition Height="*" x:Name="ModNumRow"/>
-                    <RowDefinition Height="4*"/>
                 </Grid.RowDefinitions>
-                <Grid Grid.Row="1">
-                    <Label Content="Number Of Dice: "
-                           FontSize="27"
-                           VerticalAlignment="Center"/>
-                    <ListBox Name="lbxNumberOfDice"
-                             Width="50"
-                             Height="50"
-                             Focusable="False"
-                             SelectionMode="Single"
-                             SelectedIndex="0"
-                             BorderThickness="0"
-                             Background="Transparent"
-                             HorizontalContentAlignment="Right"
-                             FontSize="35"
-                             HorizontalAlignment="Right"
-                             VerticalAlignment="Center"
-                             PreviewMouseWheel="LbxNumberOfDice_PreviewMouseWheel"
-                             ScrollViewer.VerticalScrollBarVisibility="Hidden"
-                             ScrollViewer.HorizontalScrollBarVisibility="Hidden">
-                    </ListBox>
-                </Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="20"/>
+                    <ColumnDefinition Width="50"/>
+                </Grid.ColumnDefinitions>
+                <Label Content="Number Of Dice"
+                       Grid.Row="1"
+                       Style="{StaticResource SettingsLabel}"/>
+                <Label Style="{StaticResource Colon}"
+                       Grid.Row="1"/>
+                <ListBox Name="lbxNumberOfDice"
+                         Grid.Row="1"
+                         Style="{StaticResource NumberSelector}"
+                         SelectedIndex="0"
+                         PreviewMouseWheel="LbxNumberOfDice_PreviewMouseWheel">
+                </ListBox>
+                <Label Content="Number Of Sides"
+                       Grid.Row="2"
+                       Style="{StaticResource SettingsLabel}"/>
+                <Label Style="{StaticResource Colon}"
+                       Grid.Row="2"/>
+                <ListBox Name="lbxNumberOfSides"
+                         Grid.Row="2"
+                         Style="{StaticResource NumberSelector}"
+                         SelectedIndex="0"
+                         PreviewMouseWheel="LbxNumberOfDice_PreviewMouseWheel">
+                </ListBox>
+                <Label Content="Modifier"
+                       Grid.Row="3"
+                       Style="{StaticResource SettingsLabel}"/>
+                <Label Style="{StaticResource Colon}"
+                       Grid.Row="3"/>
+                <ListBox Name="lbxModifier"
+                         Grid.Row="3"
+                         Style="{StaticResource NumberSelector}"
+                         SelectedIndex="0"
+                         PreviewMouseWheel="LbxNumberOfDice_PreviewMouseWheel">
+                </ListBox>
+                <Label Content="Modifier Amount"
+                       Grid.Row="4"
+                       Style="{StaticResource SettingsLabel}"/>
+                <Label Style="{StaticResource Colon}"
+                       Grid.Row="4"/>
+                <ListBox Name="lbxModifierAmount"
+                         Grid.Row="4"
+                         Style="{StaticResource NumberSelector}"
+                         SelectedIndex="0"
+                         PreviewMouseWheel="LbxNumberOfDice_PreviewMouseWheel">
+                </ListBox>
 
                 <Button Name="btnExit"
                         Grid.Row="5"

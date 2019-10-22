@@ -47,8 +47,8 @@ namespace DiceRollApp {
             for (int i = 1; i < 100; i++) {
                 lbxNumberOfDice.Items.Add(i);
             }
-            //lbxNumberOfDice.Items.Add(1);
-            tblkDebugText.Text = $"SelectedIndex: {lbxNumberOfDice.SelectedIndex}";
+            tblkDebugText.Text = $"SelectedIndex: {lbxNumberOfDice.SelectedIndex}\n" +
+                                 $"SelectedValue: {lbxNumberOfDice.SelectedItem}";
         }
         #endregion
 
@@ -92,7 +92,6 @@ namespace DiceRollApp {
                              $"Modifier            : {DiceRoller.Modifier}\n" +
                              $"Modifier Amount     : {DiceRoller.ModifierAmount}\n" +
                              $"Total               : {DiceRoller.FinalResult}";
-
         }
     }
 }
